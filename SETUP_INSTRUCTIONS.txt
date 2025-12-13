@@ -1,0 +1,55 @@
+========================================
+RESTAURANT ORDER SYSTEM - SETUP GUIDE
+========================================
+
+The window is empty because the database needs to be set up first.
+
+QUICK SETUP (Choose one method):
+
+METHOD 1: MySQL Command Line
+-----------------------------
+1. Open Command Prompt or PowerShell
+2. Run this command (replace 'root' with your MySQL password if different):
+   
+   mysql -u root -proot < database\schema.sql
+
+3. Restart the application
+4. Click "Refresh Orders" button
+
+METHOD 2: MySQL Workbench (Easiest)
+------------------------------------
+1. Open MySQL Workbench
+2. Connect to your MySQL server
+3. Click File → Open SQL Script
+4. Select: database\schema.sql
+5. Click Execute button (or press Ctrl+Shift+Enter)
+6. Restart the application
+7. Click "Refresh Orders" button
+
+METHOD 3: Manual SQL Execution
+-------------------------------
+1. Open MySQL Command Line or Workbench
+2. Copy all content from database\schema.sql
+3. Paste and execute in MySQL
+4. Restart the application
+5. Click "Refresh Orders" button
+
+WHAT THE DATABASE INCLUDES:
+- 5 sample orders with PENDING status
+- Sample staff and table data
+- All ready to test the scheduling algorithms!
+
+VERIFY SETUP:
+After running the SQL, verify with:
+  USE restaurant_db;
+  SELECT COUNT(*) FROM orders;
+  
+You should see 5 orders.
+
+TROUBLESHOOTING:
+- "Unknown database" → Database not created, run setup again
+- "Access denied" → Check password in DatabaseConnection.java (line 18)
+- Still empty? → Click "Refresh Orders" and check the error message
+
+========================================
+

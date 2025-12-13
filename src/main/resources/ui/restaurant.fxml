@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.restaurant.ui.RestaurantController">
+   <top>
+      <VBox spacing="10" style="-fx-background-color: #2c3e50;">
+         <padding>
+            <Insets top="20" right="20" bottom="20" left="20"/>
+         </padding>
+         <Label text="Restaurant Order &amp; Queue Optimization System" textFill="WHITE">
+            <font>
+               <Font name="System Bold" size="24"/>
+            </font>
+         </Label>
+         <HBox spacing="15" alignment="CENTER_LEFT">
+            <Label text="Select Scheduling Algorithm:" textFill="WHITE">
+               <font>
+                  <Font name="System" size="14"/>
+               </font>
+            </Label>
+            <ComboBox fx:id="algorithmComboBox" prefWidth="300"/>
+            <Button fx:id="applyAlgorithmButton" text="Apply Algorithm" onAction="#applyAlgorithm" 
+                    style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+            <Button fx:id="refreshButton" text="Refresh Orders" onAction="#refreshOrders" 
+                    style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 8 20;"/>
+         </HBox>
+         <Label fx:id="algorithmDescriptionLabel" textFill="#ecf0f1" wrapText="true">
+            <font>
+               <Font name="System" size="12"/>
+            </font>
+         </Label>
+      </VBox>
+   </top>
+   <center>
+      <SplitPane dividerPositions="0.5">
+         <items>
+            <!-- Left Panel: Original Orders -->
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+               </padding>
+               <Label text="Original Orders (Unsorted)" style="-fx-font-size: 16; -fx-font-weight: bold;">
+                  <padding>
+                     <Insets bottom="5"/>
+                  </padding>
+               </Label>
+               <TableView fx:id="originalOrdersTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="originalOrderNumberCol" text="Order #" prefWidth="100"/>
+                     <TableColumn fx:id="originalTableCol" text="Table" prefWidth="80"/>
+                     <TableColumn fx:id="originalPriorityCol" text="Priority" prefWidth="80"/>
+                     <TableColumn fx:id="originalTimeCol" text="Est. Time" prefWidth="100"/>
+                     <TableColumn fx:id="originalAmountCol" text="Amount" prefWidth="100"/>
+                     <TableColumn fx:id="originalStatusCol" text="Status" prefWidth="100"/>
+                  </columns>
+               </TableView>
+            </VBox>
+            <!-- Right Panel: Optimized Orders -->
+            <VBox spacing="10">
+               <padding>
+                  <Insets top="10" right="10" bottom="10" left="10"/>
+               </padding>
+               <Label text="Optimized Order Queue" style="-fx-font-size: 16; -fx-font-weight: bold;">
+                  <padding>
+                     <Insets bottom="5"/>
+                  </padding>
+               </Label>
+               <TableView fx:id="optimizedOrdersTable" VBox.vgrow="ALWAYS">
+                  <columns>
+                     <TableColumn fx:id="optimizedOrderNumberCol" text="Order #" prefWidth="100"/>
+                     <TableColumn fx:id="optimizedTableCol" text="Table" prefWidth="80"/>
+                     <TableColumn fx:id="optimizedPriorityCol" text="Priority" prefWidth="80"/>
+                     <TableColumn fx:id="optimizedTimeCol" text="Est. Time" prefWidth="100"/>
+                     <TableColumn fx:id="optimizedAmountCol" text="Amount" prefWidth="100"/>
+                     <TableColumn fx:id="optimizedStatusCol" text="Status" prefWidth="100"/>
+                  </columns>
+               </TableView>
+            </VBox>
+         </items>
+      </SplitPane>
+   </center>
+   <bottom>
+      <VBox spacing="10" style="-fx-background-color: #ecf0f1;">
+         <padding>
+            <Insets top="10" right="20" bottom="10" left="20"/>
+         </padding>
+         <Label fx:id="statisticsLabel" text="Statistics will appear here" 
+                style="-fx-font-size: 12; -fx-font-weight: bold;"/>
+         <Label fx:id="statusLabel" text="Ready" style="-fx-font-size: 11;"/>
+      </VBox>
+   </bottom>
+</BorderPane>
+
